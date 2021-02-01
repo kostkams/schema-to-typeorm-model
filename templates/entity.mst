@@ -1,0 +1,12 @@
+import { Entity, Column, PrimaryColumn } from "typeorm";
+
+@Entity()
+export class {{toEntityName name}} {
+    @PrimaryColumn('{{toType id}}', { generated: '{{toIdType id}}' })
+    id: {{toType id}};
+
+    {{#each properties}}
+        @Column()
+        {{name}}{{#unless (required)}}?{{/unless}}: {{toType type}};
+    {{/each}}
+}
